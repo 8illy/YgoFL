@@ -1,15 +1,49 @@
+.listedCardPic {
+    max-width: 100%;
+}
+
+.listedCard{
+    padding-top: 4px;
+    /*padding-bottom: 4px;*/
+	margin:0;
+}
+
+.flCard{
+	height: 90%;
+    margin-left: 2%;
+}
+
+.flRow{
+    height: 25%;
+}
+
+#cardListScroll{
+	/*overflow-y: scroll;*/
+    max-height: 100%;
+}
+
+.listedCard:nth-child(2n){
+    background: grey;
+}
+
+.listedCardInfo{
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 #content{
 	height: 100vh;
     background: aliceblue;
 }
 
 #topRow{
-	height: 30%;
+	height: 20%;
     background: rebeccapurple;
 }
 
 #mainRow{
-	height: 70%;
+	height: 80%;
     background: rebeccapurple;
 }
 
@@ -27,4 +61,5 @@
 
 #cardSearchOutCol{
 	background:yellow;
+	padding:0;
 }
