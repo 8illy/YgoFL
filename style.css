@@ -1,3 +1,17 @@
+#content{
+	height: 100vh;
+    background: aliceblue;
+}
+
+#topRow{
+	height: 30%;
+    background: rebeccapurple;
+}
+
+#mainRow{
+	height: 70%;
+    background: rebeccapurple;
+}
 
 #iconCol{
 	background:red;
