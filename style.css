@@ -34,15 +34,16 @@
 
 #content{
 	height: 100vh;
-    background: aliceblue;
+    /*background: aliceblue;*/
 }
 
 #topRow{
-	height: 20%;
+	height: 10%;
     background: rebeccapurple;
 }
 
 #mainRow{
+	margin-top: 25px;
 	height: 80%;
     background: rebeccapurple;
 }
