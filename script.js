@@ -105,7 +105,14 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 	}
 	
 	function updatePage(){
-		document.getElementById("pageNum").innerText = "Page "+(page+1)+" of "+Math.ceil(filteredCards.length/pageSize);
+		let maxPage = Math.ceil(filteredCards.length/pageSize);
+		if(page<0){
+			page = 0;
+		}
+		if(page>=maxPage){
+			page = maxPage-1;
+		}
+		document.getElementById("pageNum").innerText = "Page "+(page+1)+" of "+maxPage;
 		let container  = document.getElementById("cardListScroll");
 		container.innerHTML = templateEngine(listItemsTemplate,{});
 	}
@@ -128,11 +135,15 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 	}
 	
 	function addToFL(id){
+		for(let c in flList){
+			removeFromFL(id,Number(c));//?
+		}
 		let list = document.querySelector("[name=list]:checked")
 		let listIndex = list?Number(list.value):0;
 		flList[listIndex].push(cards.find(function(e){
 			return e.id == id;
 		}).id);
+		
 		redrawList(listIndex);
 	}
 	
@@ -143,9 +154,13 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 			return e==id;
 		});
 		
-		flList[listIndex].splice(index,1);
-		
-		redrawList(listIndex);
+		if(index!=-1){
+			flList[listIndex].splice(index,1);
+			
+			redrawList(listIndex);
+			return true;
+		}
+		return false;
 	}
 	
 	function changePage(dir){
@@ -155,7 +170,7 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 	
 	function exportURLHash(){
 		let hash = btoa(JSON.stringify(flList));
-		prompt("Copy this Link",window.location.pathname+"#"+hash);
+		prompt("Copy this Link",window.location.origin+window.location.pathname+"#"+hash);
 	}
 	
 	function exportImage(){
