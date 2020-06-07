@@ -1,0 +1,6 @@
+[submodule "dom-to-image"]
+	path = dom-to-image
+	url = https://github.com/tsayen/dom-to-image
+[submodule "FileSaver"]
+	path = FileSaver
+	url = https://github.com/eligrey/FileSaver.js

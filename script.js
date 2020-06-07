@@ -160,8 +160,9 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 	
 	function exportImage(){
 		let node = document.getElementById('flListCol');
-		domtoimage.toPng(node).then(function (dataUrl) {
-			window.open(dataUrl,"_blank");
+		domtoimage.toPng(node).then(function (blob) {
+			window.saveAs(blob, 'my-ban-list.png');
+			//window.open(dataUrl,"_blank");
 			//let img = new Image();
 			//img.src = dataUrl;
 			//document.body.appendChild(img);
