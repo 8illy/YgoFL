@@ -1,7 +1,26 @@
+let liststatus = [
+	{
+		name:"Banned",
+		image:"./images/banned.png",
+	},	
+	{
+		name:"Limited",
+		image:"./images/limited.png",
+	},	
+	{
+		name:"Semi-Limited",
+		image:"./images/semilimited.png",
+	},	
+	{
+		name:"Unlimited",
+		image:"./images/unlimited.png",
+	},
+];
+
 let cards = [];
 let filteredCards = [];
 
-let flList = [[],[],[],[]];
+let flList = liststatus.map(function(e){return[]});
 
 let page = 0;
 let pageSize = 5;
@@ -39,7 +58,11 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 			method: 'GET',
 			url: 'https://www.duelingbook.com/static/cards.json',
 		}, function printResult(result) {
-			cards = JSON.parse(result);
+			cards = JSON.parse(result).map(function(c){
+				c.tcgl = c.tcgl==undefined?3:c.tcgl;
+				c.ocgl = c.ocgl==undefined?3:c.ocgl;
+				return c;
+			});
 		});
 	})();
 	
@@ -71,9 +94,7 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 			cardsInList:flList[listIndex],
 			list:listIndex,
 		});
-		
-		console.log(html);
-		
+				
 		container.innerHTML = html;
 	}
 	
@@ -87,15 +108,12 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 	}
 	
 	function removeFromFL(id,listIndex){
-		console.log(id);
-		console.log(listIndex);
-		
+
 		let index = flList[listIndex].findIndex(function(e){
 			return e.id==id;
 		});
 		
 		flList[listIndex].splice(index,1);
-		
 		
 		redrawList(listIndex);
 	}
@@ -111,5 +129,14 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 		document.getElementById("btnPrev").onclick = function(){changePage(-1)};
 		document.getElementById("btnNext").onclick = function(){changePage(1)};
 		
+		
+		
+		let html = templateEngine(limitOptionsTemplate,{});	
+		let container  = document.getElementById("limitOptions");
+		container.innerHTML = html;		
+		
+		let flListColHtml = templateEngine(limitOptionsRowTemplate,{});	
+		let flListColContainer  = document.getElementById("flListCol");
+		flListColContainer.innerHTML = flListColHtml;
 		
 	}

@@ -9,10 +9,10 @@ const listItemsTemplate = `
 					<% filteredCards[i].n %>
 				</div>
 				<div class="listedCardInfo row">
-					Info row 2
+					Tcg Status - <%liststatus[filteredCards[i].tcgl].name%>
 				</div>
 				<div class="listedCardInfo row">
-					Info row 3
+					Ocg Status - <%liststatus[filteredCards[i].ocgl].name%>
 				</div>
 			</div>
 		</div>
@@ -21,6 +21,29 @@ const listItemsTemplate = `
 
 const flListItemsTemplate = `
 	<% for (let c of this.cardsInList){%>
-		<img draggable="false" class="flCard" src="https://www.duelingbook.com/images/low-res/<%c.id%>.jpg" onclick="removeFromFL(<%c.id%>,<%this.list%>)"/>
+		<div class="col-2">
+			<img draggable="false" class="flCard" src="https://www.duelingbook.com/images/low-res/<%c.id%>.jpg" onclick="removeFromFL(<%c.id%>,<%this.list%>)"/>
+		</div>
+	<% } %>
+`
+
+const limitOptionsTemplate = `
+	<% for (let i in liststatus){%>
+		<input type="radio" id="sel<%liststatus[i].name%>" name="list" value="<%i%>">
+		<label for="sel<%liststatus[i].name%>"><%liststatus[i].name%></label>
+	<% } %>
+`
+
+
+const limitOptionsRowTemplate = `
+	<% for (let e of liststatus){%>
+		<div class="flRow row">
+			<div class="col-2 flRowImgContainer">
+				<img class="flRowImg" src="<%e.image%>"/>
+			</div>
+			<div class="col-10 flRowContentContainer row">
+				
+			</div>
+		</div>
 	<% } %>
 `

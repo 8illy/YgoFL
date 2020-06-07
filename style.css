@@ -8,13 +8,16 @@
 	margin:0;
 }
 
-.flCard{
+.flCard{/*
 	height: 90%;
-    margin-left: 2%;
+    margin-left: 2%;*/
+    height: 90px;
+    margin-top: 15px;
 }
 
-.flRow{
-    height: 25%;
+.flRow {
+    min-height: 25%;
+    height: auto;
 }
 
 #cardListScroll{

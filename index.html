@@ -14,7 +14,8 @@
 		
 			<div class="row" id="topRow">
 				<div class="col-6" id="iconCol">
-				
+					<div>YGOFL - Ban List Generator</div>
+					<div>By Billy Hemphill</div>
 				
 				</div>
 				<div class="col-6" id="cardSearchFilterCol">
@@ -23,65 +24,14 @@
 					<input id="filterText"/>
 					<input type="button" value="Search" id="cardSearchBtn"/>
 					
-					<div>
-						<input type="radio" id="selBanned" name="list" value="0">
-						<label for="selBanned">Banned</label>
-						
-						<input type="radio" id="selLimited" name="list" value="1">
-						<label for="selLimited">Limited</label>
-						
-						<input type="radio" id="selSemiLimited" name="list" value="2">
-						<label for="selSemiLimited">Semi-Limited</label>
-						
-						<input type="radio" id="selUnlimited" name="list" value="3">
-						<label for="selUnlimited">Unlimited</label>
-					</div>
+					<div id="limitOptions"></div>
 					
 				
 				</div>
 			</div>
 			<div class="row" id="mainRow">
 		
-				<div class="col-9" id="flListCol">
-				
-					<div class="flRow row">
-						<div class="col-2 flRowImgContainer">
-							<img class="flRowImg" src="./images/banned.png"/>
-						</div>
-						<div class="col-10 flRowContentContainer">
-							
-						</div>
-					</div>
-					
-					<div class="flRow row">
-						<div class="col-2 flRowImgContainer">
-							<img class="flRowImg" src="./images/limited.png"/>
-						</div>
-						<div class="col-10 flRowContentContainer">
-							
-						</div>
-					</div>
-					
-					<div class="flRow row">
-						<div class="col-2 flRowImgContainer">
-							<img class="flRowImg" src="./images/semilimited.png"/>
-						</div>
-						<div class="col-10 flRowContentContainer">
-							
-						</div>
-					</div>
-					
-					<div class="flRow row">
-						<div class="col-2 flRowImgContainer">
-							<img class="flRowImg" src="./images/unlimited.png"/>
-						</div>
-						<div class="col-10 flRowContentContainer">
-							
-						</div>
-					</div>
-					
-				
-				</div>
+				<div class="col-9" id="flListCol"></div>
 				
 				<div class="col-3" id="cardSearchOutCol">
 					<div id="cardListScroll">
