@@ -1,3 +1,5 @@
+let versionNumber = 1.1
+
 let liststatus = [
 	{
 		name:"Banned",
@@ -174,7 +176,7 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 	}
 	
 	function exportImage(){
-		let node = document.getElementById('flListCol');
+		let node = document.getElementById('flListColInner');
 		domtoimage.toPng(node).then(function (blob) {
 			window.saveAs(blob, 'my-ban-list.png');
 			//window.open(dataUrl,"_blank");
@@ -194,7 +196,9 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 		container.innerHTML = html;		
 		
 		let flListColHtml = templateEngine(limitOptionsRowTemplate,{});	
-		let flListColContainer  = document.getElementById("flListCol");
+		let flListColContainer  = document.getElementById("flListColInner");
 		flListColContainer.innerHTML = flListColHtml;
+		
+		document.getElementById("versionNumber").innerText = "v"+versionNumber;
 		
 	}
