@@ -29,8 +29,8 @@ const flListItemsTemplate = `
 
 const limitOptionsTemplate = `
 	<% for (let i in liststatus){%>
-		<input type="radio" id="sel<%liststatus[i].name%>" name="list" value="<%i%>">
-		<label for="sel<%liststatus[i].name%>"><%liststatus[i].name%></label>
+		<input type="radio" id="sel<%liststatus[i].name%>" name="list" value="<%i%>" <%i==0?"checked":""%>>
+		<label class="banOptionLabel" for="sel<%liststatus[i].name%>"><%liststatus[i].name%></label>
 	<% } %>
 `
 

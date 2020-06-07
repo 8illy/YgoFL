@@ -4,7 +4,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script src="template.js"></script>
 		<script src="script.js"></script>
-		<script src="https://raw.githubusercontent.com/tsayen/dom-to-image/master/dist/dom-to-image.min.js"></script>
+		<script src="image.js"></script>
 		<title>YGOFL</title>
 	</head>
 	
@@ -17,15 +17,16 @@
 				<div class="col-6" id="iconCol">
 					<div>YGOFL - Ban List Generator</div>
 					<div>By Billy Hemphill</div>
-				
+					<div id="exportContainer">
+						<input type="button" value="Export Link" id="exportLinkBtn" />
+						<input type="button" value="Export Image" id="exportImgBtn" />
+					</div>
 				</div>
 				<div class="col-6" id="cardSearchFilterCol">
 					
 					<input id="filterName"/>
 					<input id="filterText"/>
 					<input type="button" value="Search" id="cardSearchBtn" disabled/>
-					<input type="button" value="Export Link" id="exportLinkBtn" />
-					<input type="button" value="Export Image" id="exportImgBtn" />
 					
 					<div id="limitOptions"></div>
 					
@@ -34,20 +35,20 @@
 			</div>
 			<div class="row" id="mainRow">
 		
-				<div class="col-9" id="flListCol"></div>
+				<div class="col-8" id="flListCol"></div>
 				
 				<div class="col-3" id="cardSearchOutCol">
-					<div id="cardListScroll">
-					
-					
-					</div>
-					<div>
+					<div id="pageControl">
 						<input type="button" value="<" id="btnPrev"/>
 						<span id="pageNum">
 							Page 0 of 0
 						</span>
 						<input type="button" value=">" id="btnNext"/>
 						
+					</div>
+					<div id="cardListScroll">
+					
+					
 					</div>
 				</div>
 			
