@@ -191,12 +191,7 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 	}
 	
 	window.onload = function(){
-		
-		var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1; //&& ua.indexOf("mobile");
-		if(isAndroid) {
-			document.body.innerHTML = '<meta name="viewport" content="width=device-width,height='+window.innerHeight+', initial-scale=1.0">'+ document.body.innerHTML;
-		}
-		
+
 		console.log("loading")
 		
 		let html = templateEngine(limitOptionsTemplate,{});	
