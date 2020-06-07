@@ -1,4 +1,4 @@
-let versionNumber = 1.2
+let versionNumber = 1.3;
 
 let liststatus = [
 	{
@@ -68,6 +68,8 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 				c.tcgl = c.tcgl==undefined?3:c.tcgl;
 				c.ocgl = c.ocgl==undefined?3:c.ocgl;
 				return c;
+			}).sort(function(a,b){
+				return a.n > b.n ?1:-1;
 			});
 			
 			enableCardSearch();
