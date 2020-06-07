@@ -22,7 +22,7 @@ const listItemsTemplate = `
 const flListItemsTemplate = `
 	<% for (let c of this.cardsInList){%>
 		<div class="col-2">
-			<img draggable="false" class="flCard" src="https://www.duelingbook.com/images/low-res/<%c.id%>.jpg" onclick="removeFromFL(<%c.id%>,<%this.list%>)"/>
+			<img draggable="false" class="flCard" src="https://www.duelingbook.com/images/low-res/<%c%>.jpg" onclick="removeFromFL(<%c%>,<%this.list%>)"/>
 		</div>
 	<% } %>
 `

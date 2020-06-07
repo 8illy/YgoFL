@@ -21,6 +21,10 @@ let cards = [];
 let filteredCards = [];
 
 let flList = liststatus.map(function(e){return[]});
+let urlHash = window.location.hash.substr(1);
+if(urlHash){
+	flList = JSON.parse(atob(urlHash));
+}
 
 let page = 0;
 let pageSize = 5;
@@ -63,6 +67,11 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 				c.ocgl = c.ocgl==undefined?3:c.ocgl;
 				return c;
 			});
+			
+			enableCardSearch();
+			
+			redrawAllLists();
+			
 		});
 	})();
 	
@@ -73,6 +82,20 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 		return cards.filter(function(c){
 			return c.n.toUpperCase().indexOf(searchName)!=-1 && c.e && c.e.toUpperCase().indexOf(searchText)!=-1;
 		});
+	}
+	
+	function enableCardSearch(){
+		document.getElementById("btnNext").disabled = false;
+		document.getElementById("btnPrev").disabled = false;
+		document.getElementById("cardSearchBtn").disabled = false;
+		
+		document.getElementById("cardSearchBtn").onclick = updateCardList;
+		document.getElementById("btnPrev").onclick = function(){changePage(-1)};
+		document.getElementById("btnNext").onclick = function(){changePage(1)};
+		
+		document.getElementById("exportLinkBtn").onclick = exportURLHash;
+		document.getElementById("exportImgBtn").onclick = exportImage;
+		
 	}
 	
 	function updateCardList(){
@@ -87,6 +110,12 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 		container.innerHTML = templateEngine(listItemsTemplate,{});
 	}
 	
+	function redrawAllLists(){
+		for(let i in liststatus){
+			redrawList(Number(i));//?
+		}
+	}
+	
 	function redrawList(listIndex){
 		let container = document.querySelector(".flRow:nth-child("+(listIndex+1)+") > .flRowContentContainer");
 		
@@ -94,7 +123,7 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 			cardsInList:flList[listIndex],
 			list:listIndex,
 		});
-				
+			
 		container.innerHTML = html;
 	}
 	
@@ -102,15 +131,16 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 		let list = document.querySelector("[name=list]:checked")
 		let listIndex = list?Number(list.value):0;
 		flList[listIndex].push(cards.find(function(e){
-			return e.id == id
-		}));
+			return e.id == id;
+		}).id);
 		redrawList(listIndex);
 	}
 	
 	function removeFromFL(id,listIndex){
 
 		let index = flList[listIndex].findIndex(function(e){
-			return e.id==id;
+			//return e.id==id;
+			return e==id;
 		});
 		
 		flList[listIndex].splice(index,1);
@@ -123,13 +153,17 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 		updatePage();
 	}
 	
+	function exportURLHash(){
+		let hash = btoa(JSON.stringify(flList));
+		prompt("Copy this Link",window.location.pathname+"#"+hash);
+	}
+	
+	function exportImage(){
+		
+	}
+	
 	window.onload = function(){
 		console.log("loading")
-		document.getElementById("cardSearchBtn").onclick = updateCardList;
-		document.getElementById("btnPrev").onclick = function(){changePage(-1)};
-		document.getElementById("btnNext").onclick = function(){changePage(1)};
-		
-		
 		
 		let html = templateEngine(limitOptionsTemplate,{});	
 		let container  = document.getElementById("limitOptions");
