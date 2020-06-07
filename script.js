@@ -159,7 +159,15 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 	}
 	
 	function exportImage(){
-		
+		let node = document.getElementById('flListCol');
+		domtoimage.toPng(node).then(function (dataUrl) {
+			window.open(dataUrl,"_blank");
+			//let img = new Image();
+			//img.src = dataUrl;
+			//document.body.appendChild(img);
+		}).catch(function (error) {
+			console.error('oops, something went wrong!', error);
+		});
 	}
 	
 	window.onload = function(){
