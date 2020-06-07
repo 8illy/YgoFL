@@ -1,4 +1,4 @@
-let versionNumber = 1.4;
+let versionNumber = 1.5;
 
 let liststatus = [
 	{
@@ -191,6 +191,12 @@ let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 	}
 	
 	window.onload = function(){
+		
+		var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1; //&& ua.indexOf("mobile");
+		if(isAndroid) {
+			document.write('<meta name="viewport" content="width=device-width,height='+window.innerHeight+', initial-scale=1.0">');
+		}
+		
 		console.log("loading")
 		
 		let html = templateEngine(limitOptionsTemplate,{});	
