@@ -1,0 +1,77 @@
+
+/*mobile - landcape.*/
+@media only screen and (max-width: 1000px) and (orientation: landscape){
+	
+	#content{
+		margin:0;
+		max-width:100%;
+	}
+
+		
+	.listedCardPic, 
+	.flCard {
+		height: 75px;
+		margin-top: 14px;
+	}
+	
+	.listedCardPic {
+		height: 60px;
+		margin-top: 5px;
+	}
+	
+	#cardSearchOutCol{
+		margin-left:25px;
+	}
+
+}
+
+/*mobile - portrait.*/
+@media only screen and (max-width: 1000px) and (orientation: portrait){
+	
+	
+	#flListCol,
+	#cardSearchOutCol{
+		width: 100%;
+		max-width: 100%;
+		display: block;
+		flex: none;
+		height: auto;
+	}
+	
+	#pageControl {
+		height: 55px;
+		font-size: 30px;
+	}
+	
+	#content{
+		max-width:95%;
+	}
+
+	.listedCardPicContainer {
+		max-width: 20%;
+	}
+
+	.listedCardPic, 
+	.flCard {
+		height: 110px;
+		margin-top: 14px;
+	}
+	
+	.listedCardPic {
+		height: 100px;
+		margin-top: 15px;
+		margin-left: 25px;
+		margin-bottom: 15px;
+	}	
+	
+	.listedCard {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		font-size: 25px;
+	}
+	
+	#cardSearchOutCol{
+		margin-left:0px;
+	}
+
+}
