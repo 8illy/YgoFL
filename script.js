@@ -1,4 +1,4 @@
-let versionNumber = 1.1
+let versionNumber = 1.2
 
 let liststatus = [
 	{
